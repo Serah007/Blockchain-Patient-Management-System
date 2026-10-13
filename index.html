@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PatientChain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PatientChain</h1>
+    <div class="who">
+      <span id="role" class="badge">Not connected</span>
+      <span id="account"></span>
+      <button id="connect">Connect MetaMask</button>
+    </div>
+  </header>
+  <p id="status" role="status"></p>
+
+  <main>
+    <section id="admin" hidden>
+      <h2>Register a user</h2>
+      <input id="regAddr" placeholder="Wallet address (0x...)">
+      <input id="regName" placeholder="Full name">
+      <select id="regRole"><option value="1">Patient</option><option value="2">Doctor</option></select>
+      <button id="regBtn">Register user</button>
+      <h2>System activity</h2>
+      <button id="logBtn" class="ghost">Refresh activity</button>
+      <ul id="log" class="list"></ul>
+    </section>
+
+    <section id="doctor" hidden>
+      <h2>Patient records</h2>
+      <input id="docPatient" placeholder="Patient wallet address (0x...)">
+      <button id="docView" class="ghost">View records</button>
+      <h2>Add a record</h2>
+      <select id="docType"><option>Diagnosis</option><option>Prescription</option></select>
+      <textarea id="docData" rows="3" placeholder="Diagnosis or prescription details"></textarea>
+      <button id="docAdd">Add record</button>
+      <ul id="docList" class="list"></ul>
+    </section>
+
+    <section id="patient" hidden>
+      <h2>Doctor access</h2>
+      <input id="accDoctor" placeholder="Doctor wallet address (0x...)">
+      <button id="grantBtn">Grant access</button>
+      <button id="revokeBtn" class="ghost">Revoke access</button>
+      <h2>My medical history</h2>
+      <button id="myView" class="ghost">Refresh records</button>
+      <ul id="myList" class="list"></ul>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
